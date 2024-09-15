@@ -1,0 +1,14 @@
+{
+	"files.associations": {
+		"*.py": "python",
+		"types.h": "c",
+		"__config": "c",
+		"stdio.h": "c",
+		"_stdio.h": "c",
+		"cdefs.h": "c",
+		"_seek_set.h": "c",
+		"availability.h": "c",
+		"ioccom.h": "c",
+		"libc.h": "c"
+	}
+}
