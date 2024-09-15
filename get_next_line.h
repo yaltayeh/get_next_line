@@ -11,14 +11,7 @@
 #endif
 
 char	*get_next_line(int fd);
-
-/**
- * -    join `string1` and `string2`
- * 
- * -    make free for `string1` if exists
- * @return new malloc len `string1` + `string2` + `1`
- * -- NULL if not malloc and make free for `string1`
- */
-char	*ft_strjoin(char *s1, char *s2);
+size_t	ft_strlen(const char *str);
+int	ft_strjoin_gnl(char **new_line, char *buffer);
 
 #endif

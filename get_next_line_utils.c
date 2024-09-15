@@ -1,45 +1,42 @@
 #include "get_next_line.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+size_t	ft_strlen(const char *str)
+{
+	size_t	len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
+}
+
+int	ft_strjoin_gnl(char **new_line, char *buffer)
 {
 	size_t	len;
 	size_t	i1;
 	size_t	i2;
+	char	*tmp;
+	int		is_new_line;
 
-	len = 1;
-	if (s1)
-		len += strlen(s1);
-	if (s2)
-		len += strlen(s2);
-	char *ret = malloc(len);
-	if (!ret)
-	{
-		if (s1)
-			free(s1);
-		return (NULL);
-	}
 	i1 = 0;
-	if (s1)
-	{
-		while (s1[i1])
-		{
-			ret[i1] = s1[i1];
-			i1 ++;
-		}
-		free(s1);
-	}
 	i2 = 0;
-	if (s2)
-		while (s2[i2])
-		{
-			ret[i1 + i2] = s2[i2];
-			i2++;
-		}
-	// printf("i1: %zu, i2: %zu, len: %zu\n", i1, i2, len);
-	ret[i1 + i2] = '\0';
-	// printf("s1: %s\ns2: %s\nret: %s\n", s1, s2, ret);
-	// printf("ret0: %d\n", ret[1]);
-	return (ret);
+	is_new_line = 0;
+	if (*new_line)
+		i1 = ft_strlen(*new_line);
+	while (buffer[i2] != '\n' || buffer[i2] != '\0')
+		i2++;
+	is_new_line = !!buffer[i2];
+	i2 += is_new_line;
+	len = i1 + i2;
+	tmp = malloc(len + 1);
+	if (!tmp)
+		return (NULL);
+	tmp[len] = '\0';
+	while (i2--)
+		tmp[--len] = buffer[i2];
+	while (i1--)
+		tmp[--len] = *new_line[i1];
+	if (*new_line)
+		free(*new_line);
+	*new_line = tmp;
 }
-
-char	*ft_substr();

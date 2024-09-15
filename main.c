@@ -1,14 +1,15 @@
 #include "get_next_line.h"
 #include <stdio.h>
 #include <fcntl.h>
-#include <libc.h>
 
 int main()
 {
     char *files[] = {
         "a.txt",
         "b.txt",
-        "c.txt"
+        "c.txt",
+        "get_next_line_bonus.c",
+        "get_next_line.c",
     };
     const int count = sizeof(files)/sizeof(files[0]);
 	int fds[count];
@@ -22,13 +23,24 @@ int main()
             return (1);
         }
     }
-
-    while (1)
+    int c = 1;
+    while (c)
     {
-        char *lines[count];
+        char *line;
+        int t;
+        c = 0;
         for (int i = 0; i < count; i++)
-            lines[i] = get_next_line(fds[i]);
-        
+        {
+            line = get_next_line(fds[i]);
+            printf("%d: %s", i, line);
+            if (line)
+            {
+                free(line);
+                c = 1;
+            }
+            else printf("\n");
+        }
+        printf("\n");
     }
     
     
