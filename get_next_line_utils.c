@@ -39,4 +39,5 @@ int	ft_strjoin_gnl(char **new_line, char *buffer)
 	if (*new_line)
 		free(*new_line);
 	*new_line = tmp;
+	return (is_new_line);
 }
