@@ -30,7 +30,12 @@ int	ft_strjoin_gnl(char **new_line, char *buffer)
 	len = i1 + i2;
 	tmp = malloc(len + 1);
 	if (!tmp)
-		return (NULL);
+	{
+		if (*new_line)
+			free(*new_line);
+		*new_line = NULL;
+		return (-1);
+	}
 	tmp[len] = '\0';
 	while (i2--)
 		tmp[--len] = buffer[i2];

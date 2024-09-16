@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <string.h>
+#include <errno.h>
 
 #ifndef BUFFER_SIZE
 	#define BUFFER_SIZE 4096
