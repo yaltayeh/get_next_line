@@ -64,7 +64,7 @@ static int	ft_strjoin_gnl_help(char **new_line_p, char *buffer, \
 	if (*new_line_p)
 		free(*new_line_p);
 	*new_line_p = new_line;
-	ft_strlcpy(buffer, left, BUFFER_SIZE  + 1);
+	ft_strlcpy(buffer, left, BUFFER_SIZE + 1);
 	return (1);
 }
 
